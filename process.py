@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, jsonify
 import urllib.request
+import requests
 import re
 from bs4 import BeautifulSoup
 
@@ -41,7 +42,15 @@ def process():
     name = request.form['name']
     url_set = set()
 
-
+    key_word = key_word.replace(' ', '+')
+    # key_word_split = key_word.split(' ')
+    # if len(key_word_split) > 1:
+    #     key_word = ''
+    #     for kw in key_word_split:
+    #         key_word += kw + '+'
+    # else:
+    #     key_word = key_word_split[0]
+            
     url = 'https://www.glassdoor.com/Job/jobs.htm?suggestCount=0&suggestChosen=false&clickSource=searchBtn&typedKeyword=' + key_word + '&sc.keyword=' + key_word + '&locT=&locId=&jobType='
     header = download(url)
     soup = BeautifulSoup(header, 'lxml')
