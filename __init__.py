@@ -86,6 +86,9 @@ def login_page():
     except Exception as e:
         return render_template("500.html", error = str(e))
 
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html", error = str(e))
 
 
 if __name__ == "__main__":
