@@ -1,13 +1,12 @@
-{% extends "header.html" %}
+{% extends "result_template.html" %}
 
 {% block body %}
-<body>
-	<div class="container">
-		<ul>
-	   	{% for t in TOPIC_DICT["urls"] %}
-	     	<li><h3><a href="{{t[2]}}">Job Title:{{t[0]}}, </a></h3></li>
-	   	{% endfor %}	
-		</ul>
-	</div>
-</body>
+ <div class="panel-group" style="width:80%">
+  {% for t in TOPIC_DICT["urls"] %}
+   <div class="panel panel-default">
+     <div class="panel-heading"><h4><a href="{{t[2]}}">{{t[0]}}, (Location, Salary here)</a></h4></div>
+     <div class="panel-body">Skills needed (black one means you've already had, grey one you haven't had)</div>
+   </div>
+  {% endfor %}
+ </div>
 {% endblock %}

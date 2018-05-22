@@ -15,9 +15,26 @@
    <img style="max-width:120px; margin-top: -7px;" src="{{ url_for('static', filename='images/FSquare.jpg') }}">
   </a>
  </div>	
+ <ul class="nav navbar-nav navbar-right">
+  <div style="margin-right: 10px; margin-left: 15px; margin-top: 5px; margin-bottom: 5px;"  class="container-fluid">
+   <h5>
+    {% if session.logged_in %}
+     <a href="/logout/"><span class="glyphicon glyphicon-log-out"></span> Logout   </a>
+    {% else %}
+     <a href="/login/"><span class="glyphicon glyphicon-log-in"></span> Login   </a>
+     <a href="/register/"><span class="glyphicon glyphicon-pencil"></span> Sign up</a>
+    {% endif %}
+   </h5> 
+  </div>
+ </ul>
+
 </header>
 
 <body>
+ <br>
+ <br>
+ <br>
+ <br>
  <div class="container-fluid" style="min-height:100%">
  {% block body %}{% endblock %}
  </div>

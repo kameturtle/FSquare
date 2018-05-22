@@ -1,27 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<title>Python Programming Tutorials</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
-	<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-	
-</head>
+{% extends "header.html" %}
 
-<header>
-
- <ul class="nav navbar-nav navbar-right">
-  <div style="margin-right: 90px; margin-left: 135px; margin-top: 45px; margin-bottom: 45px;"  class="container-fluid">
-   
-   <h4><a href="/login/"><span class="glyphicon glyphicon-log-in"></span> Login   </a></h4>
-   
-   <h4><a href="/register/"><span class="glyphicon glyphicon-pencil"></span> Sign up</a></h4>
-   
-  </div>
- </ul>
-	
-</header>
+{% block body %}
 
 <body>
 <center>
@@ -40,4 +19,5 @@
 </div>
 </center>
 </body>
-</html>
+
+{% endblock %}

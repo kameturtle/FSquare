@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <title>FSquare</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+ <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+ <style>
+  body {
+   font-family: "Lato", sans-serif;
+  }
+
+  .sidenav {
+   height: 100%;
+   width: 250px;
+   position: fixed;
+   z-index: 1;
+   top: 120;
+   left: 10;
+   background: #eee;
+   overflow-x: hidden;
+   padding: 8px 0;
+  }
+
+  .main {
+   margin-left: 250px; /* Same as the width of the sidenav */
+   font-size: 18px; /* Increased text to enable scrolling */
+   padding: 0px 10px;
+  }
+
+  @media screen and (max-height: 450px) {
+   .sidenav {padding-top: 15px;}
+  }
+ </style>
+</head>
+
+<header>
+ <div class="navbar-header">
+  <a class="navbar-brand" href="/">
+   <img style="max-width:120px; margin-top: -7px;" src="{{ url_for('static', filename='images/FSquare.jpg') }}">
+  </a>
+ </div>	
+ <ul class="nav navbar-nav navbar-right">
+  <div style="margin-right: 10px; margin-left: 15px; margin-top: 5px; margin-bottom: 5px;"  class="container-fluid">
+   <h5>
+    {% if session.logged_in %}
+     <a href="/logout/"><span class="glyphicon glyphicon-log-out"></span> Logout   </a>
+    {% else %}
+     <a href="/login/"><span class="glyphicon glyphicon-log-in"></span> Login   </a>
+     <a href="/register/"><span class="glyphicon glyphicon-pencil"></span> Sign up</a>
+    {% endif %}
+   </h5> 
+  </div>
+ </ul>
+
+</header>
+
+<body>
+ <br>
+ <br>
+ <br>
+ <br>
+ <!-- Sidebar -->
+ <div class="sidenav" align="center">
+  <br>
+  <h4> Searched by </h4>
+  <form action="" class="form-inline" method="post">
+   <h5> Job Title </h5>
+   <input type="text" class="form-control" placeholder = "Job Title" name="jobTitle" value="{{request.form.jobTitle}}">
+   <h5> Location </h5>
+   <input type="text" class="form-control" placeholder = "Location" name="location" value="{{request.form.location}}">
+   <h5> Expected Salary </h5>
+   <input type="text" class="form-control" placeholder = "Expected Salary" name="salary" value="{{request.form.salary}}">
+   <h5> Skills </h5>
+   <input type="text" class="form-control" placeholder = "Skills" name="skills" value="{{request.form.skills}}">
+   <input class="btn btn-default" type="submit" value="Search">
+  </form>
+ </div>
+
+ <!-- Page Content --> 
+  <div class="main">
+   {% block body %}{% endblock %}
+  </div>
+ <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+ <script type="text/javascript" src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+ 
+</body>
+</html>
